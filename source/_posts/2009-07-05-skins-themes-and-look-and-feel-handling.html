@@ -1,0 +1,29 @@
+---
+layout: post
+title: Skins, Themes and Look and Feel Handling
+published: true
+tags: []
+date: '2009-07-05 18:16:00'
+posterous_id: 10668844
+posterous_url: http://blog.not-invented-here.com/skins-themes-and-look-and-feel-handling
+posterous_slug: skins-themes-and-look-and-feel-handling
+permalink: skins-themes-and-look-and-feel-handling/index.html
+---
+<p>Since January, I have been passively planning out the features for the new art gallery software for <a href="http://halogengallery.com/">Halogen</a>. One feature I would like to include sooner rather than later is the ability to customize the look and feel of the site. I thought I had found <a href="http://not-invented-here.com/2009/03/07/skittle-and-halo-granted-template-theme-support/">a way to handle this with the Halo framework</a> but when I looked at it more closely in the context of the art gallery software I realized that the solution was not going to be sophisticated enough.</p>
+<p><a href="http://joshlarosee.com/">Josh</a> had often spoken highly of software that&nbsp;<span>could</span> be "easily customized" by template designers. Usually he would point at WordPress as an example. After having finally played with WordPress&nbsp;myself, I can see just how great its themes support actually is. It also confirmed for me the fact that in order to build a theme, one really has to have a lot of inside knowledge on how the site works and how it is put together.</p>
+<p>Other complications have come up as I began looking into serving the media assets (CSS, JS and images) from cloud storage service or a CDN. Mainly, the off-site nature of these services means that making changes to, say, CSS, will not be happening locally. The changes will need to be made to remote files. In addition, serving from a CDN may complicate matters further due to cache issues. Unless there is support for somehow busting the cache, seeing changes made to the style of the site may not be visible right away.</p>
+<p>I have a few ideas about how this can be handled from a software perspective, but they all seem to be far more complicated from the user perspective than a straight-forward theme implementation like WordPress.</p>
+<h3>Separating templates from styles</h3>
+<p>The templates need to be stored locally on the server that is serving the dynamic content. The styles need to be served from a web accessible location. For the most part, this means they cannot live in the same place. This is especially true if the styles are being served from a cloud storage service or CDN.</p>
+<p>This is a hard one for me as it seems like it is going to be far more complicated than it "should" be. WordPress has everything theme related in a single folder. Super nice. It just doesn't seem like this is going to be doable with the software as it is being designed now.</p>
+<h3>Template rendering engine needs to support preview and cache busting</h3>
+<p>The template rendering engine is going to need to support some way to preview styles and bypass any cache that may be in place for the live content. This can be tricky, as the template rendering engine would likely be intended to be simple and not be expected to pay attention to things like request parameters (in fact, it may not even have access to that data!).</p>
+<p>Cache busting will be important for publishing changes. If a preview looks good, and the changes are pushed out to the cloud storage service, and a CDN has the previous version cached, that would not be acceptable.</p>
+<p>This aspect of the issue seems to be the most troubling for me. Everything about the system is pretty straight-forward up to this point. Accessing theme and style related assets would become far more complicated if it cannot simply use the existing URL View Helper.</p>
+<h3>To keep history or to not keep history?</h3>
+<p>It is a little unclear how much history (if any) should be kept for any part of the template and style system. Perhaps a single draft version should be kept locally and all published versions will stay around on the storage file system until they are manually deleted? There are many questions here, and a lot of it will probably depend on how robust the template rendering engine becomes and the options it will give us for how to handle content versions.</p>
+<h3>And then....</h3>
+<p>If the end goal was simply new software for the Halogen website, I would probably walk away from fancy templating support (as I have done for the past few iterations of the software) and just build a core template that is completely branded for Halogen and call it good. However, I would really like to leave open the option of having other art galleries using this software someday. Without the ability to "easily" tweak the look and feel of the site, I do not think this would ever really be a possibility.</p>
+<p>Since other galleries using this software is one of my goals, I feel like this is going to be important to get in there as a core part of the software. It definitely has all of the makings of a feature that would be &nbsp;extremely difficult to shoehorn in later.</p>
+<p>All in all, I'm a little jealous of software like WordPress. They have set the bar pretty high for &nbsp;allowing for people to customize the look and feel of their site. It really does not seem like it is very trivial to add this type of functionality at all, much less do so elegantly and with such a straight-forward workflow. Way to go, WordPress!</p>
+<p>I'll have to think on this some more, and maybe start doing some serious experimentation once I have <a href="http://code.google.com/p/safsi-php/">Safsi</a> up and running.</p>

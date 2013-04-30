@@ -1,0 +1,12 @@
+---
+layout: post
+title: Mac OSX share from Vista not working? Solution!
+published: true
+tags: []
+date: '2009-03-13 10:22:00'
+posterous_id: 10668825
+posterous_url: http://blog.not-invented-here.com/mac-osx-share-from-vista-not-working-solution
+posterous_slug: mac-osx-share-from-vista-not-working-solution
+permalink: mac-osx-share-from-vista-not-working-solution/index.html
+---
+<p>After trying to get my new Vista install connecting to my Mac's Samba share, I discovered that the commandline smbclient would actually connect just fine. A quick web search found <a href="http://www.geekybrit.com/2007/04/tech/connecting-to-a-mac-os-x-share-from-vista.html">this post</a> that discussed a fix, and it appears that it works!  This fix requires entering the Group Policy Editor ( Start &gt; Run &gt; gpedit.msc ) and navigating to "Security Options":  -&gt; Local Computer Policy -&gt; Computer Configuration -&gt; Windows Settings -&gt; Security Settings -&gt; Local Policies -&gt; Security Options  For the "Network security: LAN Manager authentication level" setting, change to "Send LM &amp; NTLM - use NTLMv2 session security if negotiated."  Worked like a charm!</p>
