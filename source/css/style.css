@@ -1,4 +1,5 @@
-article {
+hr {
+    margin: 50px 0 75px;
 }
 
 h4 small
@@ -9,7 +10,7 @@ h4 small
 }
 
 .mainContent, footer.container {
-    max-width: 900px;
+    max-width: 500px;
 }
 
 footer.container {
@@ -27,5 +28,8 @@ footer.container {
     body {
         padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
         padding-bottom: 40px;
+    }
+    .mainContent, footer.container {
+        max-width: 700px;
     }
 }
