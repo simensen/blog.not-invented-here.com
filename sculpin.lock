@@ -1,0 +1,47 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
+    ],
+    "hash": "aa21acaf076124a204d6c0d6ad54922c",
+    "packages": [
+        {
+            "name": "sculpin/bootstrap-3-blog-theme",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sculpin/bootstrap-3-blog-theme.git",
+                "reference": "6d278a52c2636908fb3b122115e6b1a43a4ab6b4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sculpin/bootstrap-3-blog-theme/zipball/6d278a52c2636908fb3b122115e6b1a43a4ab6b4",
+                "reference": "6d278a52c2636908fb3b122115e6b1a43a4ab6b4",
+                "shasum": ""
+            },
+            "type": "sculpin-theme",
+            "description": "A Bootstrap 3 Blog Theme for Sculpin",
+            "support": {
+                "source": "https://github.com/sculpin/bootstrap-3-blog-theme/tree/master",
+                "issues": "https://github.com/sculpin/bootstrap-3-blog-theme/issues"
+            },
+            "time": "2014-01-15 03:40:35"
+        }
+    ],
+    "packages-dev": [
+
+    ],
+    "aliases": [
+
+    ],
+    "minimum-stability": "stable",
+    "stability-flags": {
+        "sculpin/bootstrap-3-blog-theme": 20
+    },
+    "platform": [
+
+    ],
+    "platform-dev": [
+
+    ]
+}
